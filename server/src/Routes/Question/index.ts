@@ -28,5 +28,43 @@ router.post("/create-question", AuthMiddleware(), async (req, res) => {
   });
 });
 
-router.put("/update-question", AuthMiddleware(), async (req, res) => {});
+router.put(
+  "/update-question/:questionID/: descID",
+  AuthMiddleware(),
+  async (req, res) => {
+    const {
+      Title,
+      Tags,
+      Difficulty,
+      Description_id,
+      Creator_id,
+      Content,
+      Boilerplate,
+    } = req.body;
+    const question = await QuestionModel.findByIdAndUpdate(
+      req.params.questionID,
+      {
+        Title,
+        Tags,
+        Difficulty,
+        Description_id,
+        Creator_id,
+      }
+    );
+    const description = await DescriptionModel.findByIdAndUpdate(
+      req.params.descID,
+      {
+        Content,
+        Boilerplate,
+      }
+    );
+    res.status(200).json({
+      isError: false,
+      data: {
+        question,
+        description,
+      },
+    });
+  }
+);
 export default router;
