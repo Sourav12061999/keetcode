@@ -40,3 +40,5 @@ router.put("/:testcaseID", AuthMiddleware(), async (req, res) => {
     data,
   });
 });
+
+export default router;
