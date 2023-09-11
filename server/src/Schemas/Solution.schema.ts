@@ -10,6 +10,7 @@ export interface SolType extends Document {
   Time_taken?: number;
   Lang_id: LangType["_id"];
   Status: SolutionStatus;
+  Error?: string;
 }
 
 const SolSchema = new Schema<SolType>({
@@ -18,6 +19,7 @@ const SolSchema = new Schema<SolType>({
   Time_taken: { type: Schema.Types.ObjectId, required: false },
   Lang_id: { type: Schema.Types.ObjectId, required: true, ref: "langs" },
   Status: { type: String, required: true },
+  Error: { type: String, required: false },
 });
 
 export const SolModel = model<SolType>("solutions", SolSchema);

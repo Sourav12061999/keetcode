@@ -3,6 +3,9 @@ import { z } from "zod";
 config();
 export const PORT = process.env.PORT || 8080;
 export const JWT_SECRET = process.env.JWT_SECRET!;
+export const SQS_URL = process.env.SQS_URL!;
+export const AWS_REGION = process.env.AWS_REGION!;
+z.string().parse(SQS_URL);
 z.string().parse(JWT_SECRET);
 
 export const DIRPATH = __dirname;

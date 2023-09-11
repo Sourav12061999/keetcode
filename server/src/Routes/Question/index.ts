@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { DescriptionModel, QuestionModel } from "src/Schemas";
+import { DescriptionModel, QuestionModel } from "../../Schemas";
 import { AuthMiddleware } from "../../middleware";
 
 const router = Router();
@@ -29,7 +29,7 @@ router.post("/create-question", AuthMiddleware(), async (req, res) => {
 });
 
 router.put(
-  "/update-question/:questionID/: descID",
+  "/update-question/:questionID/:descID",
   AuthMiddleware(),
   async (req, res) => {
     const {
